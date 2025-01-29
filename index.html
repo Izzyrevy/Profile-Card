@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Card</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #808080;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .profile-card {
+            background: rgb(255, 255, 255);
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(233, 52, 6, 0.308);
+            padding: 20px;
+            max-width: 300px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .profile-card:hover {
+            transform: scale(1.05);
+        }
+
+        img[data-testid="profilePicture"] {
+            width: 50%;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        img[data-testid="profilePicture"]:hover {
+            transform: scale(1.1);
+        }
+
+        h1[data-testid="fullName"] {
+            background:linear-gradient(to right, rgb(243, 77, 12), rgb(55, 0, 255));
+            background-clip: text;
+            color: transparent;
+            font-size: 1.5em;
+            margin: 0 10px 0;
+        }
+
+        h2[data-testid="jobTitle"] {
+            font-size: 1.5em;
+            color: #666;
+            font-family: monospace;
+            margin: 2px 0;
+        }
+
+        p {
+            margin: 10px 0;
+            font-size: 1.1em;
+            font-family: monospace;
+            color: #4e4c4c;
+        }
+
+       p[data-testid="emailAddress"] {
+            background:linear-gradient(to right, rgb(243, 77, 12), rgb(55, 0, 255));
+            background-clip: text;
+            color: transparent;
+            cursor: pointer;
+            text-decoration: none;
+            transition: color 0.3s ease;
+       }
+
+        a {
+            text-decoration: none;
+            color: #007BFF;
+            margin: 0 5px;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+
+        #utcTime {
+            font-size: 0.9em;
+            color: #999;
+            margin-top: 15px;
+        }
+
+        @media (max-width: 400px) {
+            .profile-card {
+                padding: 15px;
+            }
+
+            h1[data-testid="fullName"] {
+                font-size: 1.3em;
+            }
+
+            h2[data-testid="jobTitle"] {
+                font-size: 1em;
+            }
+        }
+    </style>
+
+</head>
+<body>
+    <div class="profile-card">
+        <img src="profile.png" alt="Profile Picture" data-testid="profilePicture">
+        <h1 data-testid="fullName">Omanudhowho Isreal</h1>
+        <h2 data-testid="jobTitle">Frontend Developer</h2>
+        <p data-testid="shortBio">Frontend developer passionate about crafting intuitive and visually stunning user experiences with HTML, CSS and Javascript. Proficient in responsive design, UI/UX principles, and modern frontend frameworks </p>
+        <p data-testid="currentLocation">Lagos, Nigeria</p>
+        <p data-testid="emailAddress">isrealoman11@gmail.com</p>
+        <div data-testid="socialLinks">
+            <a href="https://linkedin.com/in/" target="_blank"><i class="fa-brands fa-linkedin fa-xl" style="color: #1203e2;"></i></a>
+            <a href="https://github.com/" target="_blank"><i class="fa-brands fa-square-github fa-xl" style="color: #f10e0e;"></i></a>
+            <a href="https://twitter.com/" target="_blank"><i class="fa-brands fa-square-facebook fa-xl" style="color: #1203e2;"></i></a>
+        </div>
+        <p data-testid="currentTimeUTC" id="utcTime"></p>
+    </div>
+    <script>
+        function updateTime() {
+            const utc = document.getElementById('utcTime')
+            const now = new Date();
+            const utcString = now.toUTCString();
+            utc.innerText = utcString;
+        }
+        updateTime();
+        setInterval(updateTime, 1000);
+    </script>
+
+</body>
+</html>
